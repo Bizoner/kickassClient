@@ -1,0 +1,37 @@
+<app-header></app-header>
+  <div class="container" id="mixtapes">
+    <div class="row">
+      <h1>Mixtapes</h1>
+    </div>
+    <div class="mixtape-cont row">
+      <div class="sort">
+        A Playlist for every occasion.
+        <button class="btn btn-sm" (click)="sortActive = !sortActive">sort by</button>
+        <div *ngIf="sortActive" class="sortbtns">
+          <button class="btn btn-sm" (click)="sortBy('title')">Title</button>
+          <button class="btn btn-sm" (click)="sortBy('num')">Num of tracks</button>
+          <button class="btn btn-sm" (click)="sortBy('creator')">Creator</button>
+        </div>
+      </div>
+      <div class="loader" *ngIf="loading"></div>
+      <div *ngFor="let mixtape of currentMixtapes" class="col-md-3 mixtape-thumb">
+        <div class="coverImg" [style.background-image]="'url(' + mixtape.coverImg + ')'" routerLinkActive="active" [routerLink]="['/singlemix',mixtape._id]">
+          <div class="overlay">
+          <p>
+            <span class="glyphicon glyphicon-heart"></span>
+            {{mixtape.likes}}
+          </p>
+            <p>
+              {{mixtape.songList.length}} Tracks
+            </p>
+            <p>
+              by {{mixtape.creatorName}}
+            </p>
+            <h2>
+              {{mixtape.title}}
+            </h2>
+          </div>
+      </div>
+    </div>
+    </div>
+  </div>
