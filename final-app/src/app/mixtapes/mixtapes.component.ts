@@ -69,9 +69,6 @@ export class MixtapesComponent implements OnInit {
 
       if (data.status == 200) {
         var res = JSON.parse(data._body);
-
-        t.localStorage.set('name',res.data.firstName+' '+res.data.lastName);
-        t.localStorage.set('image',res.data.profileImg);
         var sendData = {
           instruments : res.data.favInstruments
         };
